@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="餃個朋友｜每日現包、金黃酥脆的職人鍋貼。線上選購招牌鍋貼、水餃及冷凍禮盒。" />
   <meta name="theme-color" content="#f7f1e7" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="餃個朋友" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <title>餃個朋友｜一口酥脆，剛剛好的相遇</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
@@ -389,6 +397,8 @@
       if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{const c=sign.image,g=c.getContext('2d');g.fillStyle='#3c2920';g.fillRect(0,0,c.width,c.height);g.strokeStyle='#e8ad81';g.lineWidth=6;g.strokeRect(10,10,c.width-20,c.height-20);g.fillStyle='#fbe9d6';g.font='700 64px "Noto Serif TC",serif';g.textAlign='center';g.textBaseline='middle';g.fillText('餃個朋友',c.width/2,c.height/2+4);sign.needsUpdate=true;if(reduce)renderer.render(scene,camera)});
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initStreet3D);else initStreet3D();
+    // PWA：註冊 Service Worker（需透過 https 或 localhost 開啟）
+    if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'))window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
     $('year').textContent=new Date().getFullYear();renderTabs();renderProducts();renderCart();renderStores();renderFaq();
     // Lucide CDN 使用 defer 載入；確保 CDN 完成後圖示才被替換。
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',icons);else icons();
